@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="projectData"
+            type="com.example.testmvvmretrofit.model.GithubReposItem" />
+        
+        <variable
+            name="onCLickGithubRepo"
+            type="com.example.testmvvmretrofit.views.callbacks.OnGithubRepoClick" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:onClick="@{() ->  onCLickGithubRepo.onClickGithubRepo(projectData)}"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/project_name"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:text="@{projectData.name}" />
+
+            <TextView
+                android:id="@+id/languages"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/project_language"
+                android:textSize="18sp"
+                android:text="@{String.format(@string/languages, projectData.language)}" />
+
+            <TextView
+                android:id="@+id/project_watchers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/project_watchers"
+                android:textSize="16sp"
+                android:text="@{String.format(@string/watchers, projectData.watchers)}" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

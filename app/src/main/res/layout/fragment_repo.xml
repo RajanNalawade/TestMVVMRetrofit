@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="isLoading"
+            type="Boolean" />
+
+        <variable
+            name="repoItem"
+            type="com.example.testmvvmretrofit.view_models.RepoItemViewModel" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".views.FragmentRepo">
+
+        <TextView
+            android:id="@+id/loading_project"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/loading_project"
+            android:textAlignment="center"
+            visibleGone="@{isLoading}" />
+
+        <LinearLayout
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|center_horizontal"
+            android:padding="5dp"
+            android:paddingTop="8dp"
+            android:orientation="vertical"
+            visibleGone="@{!isLoading}">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/ic_launcher_foreground" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/project_name"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:text="@{repoItem.repoItem.name}"
+                android:textAlignment="center"
+                android:paddingBottom="5dp" />
+
+            <TextView
+                android:id="@+id/project_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/project_description"
+                android:textSize="18sp"
+                android:text="@{repoItem.repoItem.description}" />
+
+
+            <TextView
+                android:id="@+id/languages"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/project_language"
+                android:textSize="16sp"
+                android:text="@{String.format(@string/languages, repoItem.repoItem.language)}" />
+
+            <TextView
+                android:id="@+id/project_watchers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/project_watchers"
+                android:textSize="16sp"
+                android:text="@{String.format(@string/watchers, repoItem.repoItem.watchers)}" />
+
+            <TextView
+                android:id="@+id/project_open_issues"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/open_issues"
+                android:textSize="16sp"
+                android:text="@{String.format(@string/openIssues, repoItem.repoItem.open_issues)}" />
+
+
+            <TextView
+                android:id="@+id/project_created_at"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="Created At"
+                android:textSize="16sp"
+                android:text="@{String.format(@string/created_at, repoItem.repoItem.created_at)}" />
+
+            <TextView
+                android:id="@+id/project_updated_at"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="Updated At"
+                android:textSize="16sp"
+                android:text="@{String.format(@string/updated_at, repoItem.repoItem.updated_at)}" />
+
+            <TextView
+                android:id="@+id/clone_url"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/open_issues"
+                android:textSize="16sp"
+                android:text="@{String.format(@string/clone_url, repoItem.repoItem.clone_url)}" />
+
+        </LinearLayout>
+
+
+    </FrameLayout>
+</layout>
