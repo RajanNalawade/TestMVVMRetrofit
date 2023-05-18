@@ -49,8 +49,6 @@ class FragmentGithubRepoList : Fragment(), OnGithubRepoClick {
         binding.projectList.adapter = listAdapter
         binding.isLoading = true
 
-
-
         return binding.root
     }
 
