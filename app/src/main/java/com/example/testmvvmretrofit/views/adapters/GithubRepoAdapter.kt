@@ -8,9 +8,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.testmvvmretrofit.databinding.GithubRepoListItemBinding
 import com.example.testmvvmretrofit.model.GithubReposItem
 import com.example.testmvvmretrofit.views.callbacks.OnGithubRepoClick
+import dagger.hilt.android.scopes.ActivityScoped
+import javax.inject.Inject
 
-class GithubRepoAdapter(private val onGithubRepoClick: OnGithubRepoClick) :
+class GithubRepoAdapter @Inject constructor() :
     ListAdapter<GithubReposItem, GithubRepoAdapter.GithubRepoViewHolder>(ListDifferentiator()) {
+
+    private var onGithubRepoClick: OnGithubRepoClick? = null
+    fun setonGithubRepoClick(mListener : OnGithubRepoClick){
+        this.onGithubRepoClick = mListener
+    }
 
     private lateinit var githubRepoListItemBinding: GithubRepoListItemBinding
 
@@ -30,7 +37,7 @@ class GithubRepoAdapter(private val onGithubRepoClick: OnGithubRepoClick) :
 
     override fun onBindViewHolder(holder: GithubRepoViewHolder, position: Int) {
         val repo = getItem(position)
-        holder.bind(repo, onGithubRepoClick)
+        holder.bind(repo, onGithubRepoClick!!)
     }
 
     class ListDifferentiator : DiffUtil.ItemCallback<GithubReposItem>() {

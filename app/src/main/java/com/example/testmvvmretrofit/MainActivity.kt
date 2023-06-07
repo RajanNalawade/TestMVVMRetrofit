@@ -5,8 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.testmvvmretrofit.model.GithubReposItem
 import com.example.testmvvmretrofit.views.FragmentGithubRepoList
 import com.example.testmvvmretrofit.views.FragmentRepo
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

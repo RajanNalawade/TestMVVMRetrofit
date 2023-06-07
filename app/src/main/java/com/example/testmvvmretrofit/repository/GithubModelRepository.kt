@@ -5,8 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import com.example.testmvvmretrofit.model.ApiHelper.GitRepoApi
 import com.example.testmvvmretrofit.model.GithubRepos
 import com.example.testmvvmretrofit.model.GithubReposItem
+import javax.inject.Inject
 
-class GithubModelRepository(private val gitRepoApi: GitRepoApi) {
+class GithubModelRepository @Inject constructor(private val gitRepoApi: GitRepoApi) {
     private val lstGithubRepos = MutableLiveData<GithubRepos>()
     val mLstGithubRepos : LiveData<GithubRepos>
         get() = lstGithubRepos
