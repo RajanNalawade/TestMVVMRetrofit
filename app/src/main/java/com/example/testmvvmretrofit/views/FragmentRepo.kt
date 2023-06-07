@@ -61,10 +61,6 @@ class FragmentRepo : Fragment() {
             RepoItemViewModelFactory(repository, arguments?.getString(KEY_PROJECT_ID).toString())
         )[RepoItemViewModel::class.java]*/
 
-        /*val viewModel: RepoItemViewModel by viewModels<RepoItemViewModel> {
-            RepoItemViewModelFactory.provideRepoItemViewModelFactory(factory, arguments?.getString(KEY_PROJECT_ID).toString())
-        }*/
-
         binding.isLoading = true
 
         viewModel.repoItem.observe(viewLifecycleOwner, Observer {
